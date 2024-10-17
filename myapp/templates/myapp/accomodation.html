@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodations</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2; /* Light gray background */
+            color: #333; /* Text color */
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50; /* Green background */
+            color: #fff; /* White text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+            display: inline-block;
+            margin: 10px; /* Add margin for spacing */
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+        button:hover {
+            background-color: #45a049; /* Darker green background on hover */
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2); /* Transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+        }
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ACCOMMODATIONS</h1>
+
+        <ul>
+            <button style="background-color: #0c0c0c;"><a href="{% url 'myapp:hall_portal' %}" style="color: #fff;">Booking Halls</a></button>
+            <button style="background-color: #222222;"><a href="{% url 'myapp:external_dashboard' %}" style="color: #fff;">Back to Events</a></button>
+        </ul>
+
+        <div>
+            <h2>Booked Accommodation Details</h2>
+            {% if booked_accommodation %}
+                <ul>
+                    <li>Name: {{ booked_accommodation.name_par }}</li>
+                    <li>Email: {{ booked_accommodation.email }}</li>
+                    <li>Date: {{ booked_accommodation.date }}</li>
+                    <li>Hall Name: {{ booked_accommodation.name_hall }}</li>
+                    <li>Price: {{ booked_accommodation.price }}</li>
+                </ul>
+            {% else %}
+                <p>No accommodation booked yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

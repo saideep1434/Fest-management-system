@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5; /* Light gray background */
+            /* background-image: url('background_image.jpg'); */
+            color: #333; /* Text color */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff; /* White background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+        }
+        h1, h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #007bff; /* Blue background */
+            color: #fff; /* White text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+            display: inline-block;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker blue background on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Event Details</h1>
+
+        <h2>Organiser: {{ org_name }}</h2>
+
+        <h2>Participants:</h2>
+        {% if participants %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Email ID</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for participant in participants %}
+                <tr>
+                    <td>{{ participant.0 }}</td>
+                    <td>{{ participant.1 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No participants registered for this event.</p>
+        {% endif %}
+
+        <h2>Volunteers:</h2>
+        {% if volunteers %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Email ID</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for volunteer in volunteers %}
+                <tr>
+                    <td>{{ volunteer.0 }}</td>
+                    <td>{{ volunteer.1 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No volunteers registered for this event.</p>
+        {% endif %}
+
+        <!-- Adding a back button to go back to the organizer dashboard -->
+        <button><a href="{% url 'myapp:organizer_dashboard' %}">Back to Events</a></button>
+    </div>
+</body>
+</html>

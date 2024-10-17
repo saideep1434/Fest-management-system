@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin-style.css' %}">
+</head>
+<body>
+    <!-- <h2>admin</h2> -->
+    <header>
+        <h1>Spring Fest</h1>
+    
+    </header>
+    <main>
+        <section id="content">
+            <p>"Welcome to Spring Fest, where the vibrant energy of the season comes alive! As the flowers bloom and the air fills with the scent of renewal, our festival invites you to embark on an extraordinary journey of culture, creativity, and connection. Step into a world where music fills the air, art captivates the soul, and festivities ignite the spirit of joy and celebration. With a rich tapestry of performances, exhibitions, and interactive experiences, Spring Fest promises an immersive celebration like no other."</p>
+            <p>"At Spring Fest, we believe in the power of community and the magic of shared experiences. Whether you're a music enthusiast, an art lover, or simply seeking moments of pure delight, our festival offers something for everyone. Join us as we come together to revel in the wonders of spring, forge new connections, and create cherished memories that will last a lifetime. Get ready to embrace the season's splendor and dive into a world of endless possibilities at Spring Fest!"</p>
+        </section>
+    </main>
+   
+    <form action="{% url 'myapp:admin_event_dashboard' %}" method="post">
+        {% csrf_token %}
+        <section id="buttons">
+            <button type="submit">Events</button>
+        </section>
+    </form>
+
+    <form action="{%  url 'myapp:hall_admin_portal' %}" method="post">
+        {% csrf_token %}
+        <section id="buttons">
+            <button type="submit">Accomdation</button>
+        </section>
+    </form>
+    <!-- <section id="buttons">
+        <a href="{% url 'myapp:contact' %}"><button>Contact Us</button></a>
+    </section> -->
+    <!-- <section id="buttons">
+        <a href="{% url 'myapp:sponsor' %}"><button>Sponsor</button></a>
+    </section> -->
+
+    <form action="{%  url 'myapp:logout' %}" method="post">
+        {% csrf_token %}
+        <section id="buttons">
+            <button type="submit">Log Out</button>
+        </section>
+    </form>
+    <form action="{%  url 'myapp:login' %}" method="post">
+        {% csrf_token %}
+        <section id="buttons">
+            <button type="submit">Add User</button>
+        </section>
+    </form>
+    <form action="{%  url 'myapp:delete' %}" method="post">
+        {% csrf_token %}
+        <section id="buttons">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <button type="submit">delete User</button>
+        </section>
+    </form>
+
+    
+</body>
+</html>

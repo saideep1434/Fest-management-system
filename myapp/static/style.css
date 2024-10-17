@@ -1,0 +1,82 @@
+* {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    background-image: url('fest.jpg');
+    color: #ffffff; /* White text color */
+    min-height: 100vh;
+}
+
+.color2 {
+    background-color: rgba(6, 52, 90, 0.5); /* Semi-transparent background color */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 80%; /* Adjust width as needed */
+    max-width: 800px;
+    border-radius: 10px;
+    overflow: hidden; /* Prevent content from overflowing */
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+}
+
+.containerflex {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.event-box {
+    width: 100%;
+    max-width: 400px; /* Limit width for better readability */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    text-align: center;
+}
+
+.event-box:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background on hover */
+    color: #ffffff; /* White text color on hover */
+}
+
+.events {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    background-color: #512da8; /* Dark violet color */
+    color: #ffffff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #673ab7; /* Lighter shade of violet on hover */
+}
+

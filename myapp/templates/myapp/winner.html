@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winners</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light grey background */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333; /* Dark grey color for headings */
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff; /* White background for table */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Bottom border for table cells */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Light grey background for table header cells */
+        }
+
+        tr:hover {
+            background-color: #f9f9f9; /* Slightly darker background on hover */
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007bff; /* Blue color for buttons */
+            color: #fff; /* White text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Winners</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Event</th>
+                <th>Winner Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for winner in winners %}
+            <tr>
+                <td>{{ winner.0 }}</td>
+                <td>{{ winner.1 }}</td>
+                <td>{{ winner.2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="{% url 'myapp:homepage' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Home</button>
+    </form>
+</body>
+</html>

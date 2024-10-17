@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    
+    <form action="{% url 'myapp:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"></head>
+<body>
+    <h1 style=" display: flex; justify-content: space-around;" >Events
+        <button class="center" ><a href= "{% url 'myapp:accomadation_portal' %}">ACCOMADATION</a></button>
+        
+    </h1>
+    <div class="events">
+        {% if events %}
+            {% for event in events %}
+                <div class="event-box">
+                    <div class="color" >
+                        <br>
+                        <h2 style="margin: 0; margin-left: 5px; ">{{ event.name }}</h2>
+                        <p>{{ event.description }}</p>
+                        <p>Date: {{ event.date }}</p>
+                        <p>Time: {{ event.time }}</p>
+                        <p>Location: {{ event.location }}</p>
+                        <form action="{% url 'myapp:event_ext_registration' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="event" value="{{ event.name}}">
+                            <button type="submit">Register</button>
+                            
+                        </form>
+                        {% if request.GET.registered == event.name %}
+                                    <p class="text-xl lg:text-xl text-white text-center">Registered successfully!!</p>
+                                {% endif %}
+
+                    </div>
+
+                    </div>
+            {% endfor %}
+        {% else %}
+            <p>No events available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

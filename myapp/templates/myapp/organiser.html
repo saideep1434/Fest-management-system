@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <form action="{% url 'myapp:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"></head>
+<body>
+    <div class="color2" >
+        <h1>Events</h1>
+        <div class="events">
+            {% if events %}
+                {% for event in events %}
+                    <div class="event-box">
+                        <div class="color">
+                            <br>
+                            <h2 class="margh">{{ event.name }}</h2>
+                            <p>{{ event.description }}</p>
+                            <p>Date: {{ event.date }}</p>
+                            <p>Time: {{ event.time }}</p>
+                            <p>Location: {{ event.location }}</p>
+                            <form action="{% url 'myapp:event_details' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="event" value="{{ event.name}}">
+                                <button type="submit">Details</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No events available.</p>
+            {% endif %}
+        </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body style="justify-content: center; font-size: larger;" >
+    <div class="color2">
+        <h2 class="center"  >Student Registration</h2>
+        <br>
+        <br>
+        <div class="center">
+            <div ></div>
+            <form class="center" method="post">
+                {% csrf_token %}
+                <label for="name">Username:</label><br>
+                <input type="text" id="name" name="name"><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password"><br>
+                <label for="password1">Confirm Password:</label><br>
+                <input type="password" id="password1" name="password1"><br>
+                <label for="password1">Roll Number:</label><br>
+                <input type = "roll_number" id = "roll_number" name = "roll_number"><br>
+                {% if error %}
+                        <p class="text-xl lg:text-xl text-white text-center">{{ error }}</p>
+                    {% endif %}
+                <button class="reg" style="margin-left: 5px;" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

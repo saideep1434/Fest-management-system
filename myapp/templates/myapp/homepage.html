@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin-style.css' %}">
+</head>
+<body>
+
+<header>
+    <h1>Spring Fest</h1>
+</header>
+
+<main>
+    <section id="content">
+        <p>Welcome to Spring Fest, where the vibrant energy of the season comes alive! As the flowers bloom and the air fills with the scent of renewal, our festival invites you to embark on an extraordinary journey of culture, creativity, and connection. Step into a world where music fills the air, art captivates the soul, and festivities ignite the spirit of joy and celebration. With a rich tapestry of performances, exhibitions, and interactive experiences, Spring Fest promises an immersive celebration like no other.</p>
+        <p>At Spring Fest, we believe in the power of community and the magic of shared experiences. Whether you're a music enthusiast, an art lover, or simply seeking moments of pure delight, our festival offers something for everyone. Join us as we come together to revel in the wonders of spring, forge new connections, and create cherished memories that will last a lifetime. Get ready to embrace the season's splendor and dive into a world of endless possibilities at Spring Fest!</p>
+    </section>
+
+    <section id="buttons">
+        <form action="{%  url 'myapp:login' %}" method="post">
+            {% csrf_token %}
+            <button id="login-button" type="submit">Log In</button>
+        </form>
+    </section>
+
+    <section id="buttons">
+        <a href="{% url 'myapp:contact' %}"><button id="contact-button">Contact Us</button></a>
+    </section>
+
+    <section id="buttons">
+        <a href="{% url 'myapp:sponsor' %}"><button id="sponsor-button">Sponsor</button></a>
+    </section>
+
+    <section id="buttons">
+        <form action="{%  url 'myapp:winner' %}" method="post">
+            {% csrf_token %}
+            <button id="winner-button" type="submit">Winners</button>
+        </form>
+    </section>
+</main>
+
+</body>
+</html>

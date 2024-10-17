@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HALLS AVAILABLE</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(240, 238, 238, 0); /* Fully transparent background */
+        }
+
+        .color2 {
+            background-color: rgba(248, 248, 248, 0); /* Fully transparent background for the main content */
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333; /* Dark grey color for headings */
+        }
+
+        .events {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .event-box {
+            width: calc(33.33% - 20px); /* Adjust the width of event boxes */
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(240, 240, 240, 0); /* Fully transparent background for event boxes */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+        }
+
+        .event-box:hover {
+            background-color: rgba(224, 224, 224, 0); /* Fully transparent background on hover */
+        }
+
+        .color {
+            padding: 10px;
+        }
+
+        .margh {
+            margin: 0;
+            color: #333; /* Dark grey color for headings */
+        }
+
+        button {
+            background-color: #007bff; /* Blue color for buttons */
+            color: #fff; /* White text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+
+        form {
+            margin-bottom: 0; /* Remove bottom margin for the form */
+        }
+    </style>
+</head>
+<body>
+
+<div class="color2">
+    <h1>HALLS AVAILABLE</h1>
+    <div class="events">
+        {% if halls %}
+            {% for hall in halls %}
+                <div class="event-box">
+                    <div class="color">
+                        <h2 class="margh">{{ hall.name }}</h2>
+                        <p>Location: {{ hall.location }}</p>
+                        <p>Vacancy: {{ hall.vacancy }}</p>
+                        <p>Price: {{ hall.price }}</p>
+                        <form action="{% url 'myapp:mybooking_portal' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="name_hall" value="{{ hall.name }}">
+                            <button type="submit">Book</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No halls available.</p>
+        {% endif %}
+    </div>
+    <button><a href="{% url 'myapp:accomadation_portal' %}" style="color: #fff;">Back</a></button>
+</div>
+
+</body>
+</html>

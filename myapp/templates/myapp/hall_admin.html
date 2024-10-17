@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HALLS AVAILABLE</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"></head>
+<body>
+    
+    
+    
+    <div class="color2" >
+        <h1>HALLS AVAILABLE</h1>
+        <ul>
+            <button><a href= "{% url 'myapp:admin_dashboard' %}">Home</a></button>
+    <div class="events">
+
+        {% if halls %}
+            {% for hall in halls %}
+                <div class="event-box" >
+                    <div class="color">
+                        <br>
+                        <h2 class="margh" >{{ hall.name }}</h2>
+                        
+                        <p>Location: {{ hall.location }}</p>
+                        <p>Vacancy: {{ hall.vacancy }}</p>
+                        <p>Price: {{ hall.price }}</p>
+                        <form action="{% url 'myapp:hall_details' %}" method="POST">
+                          {% csrf_token %}
+                            <input type="hidden" name="name_hall" value="{{ hall.name}}">
+                            <button type="submit">Details</button>
+                        </form>
+                    </div>
+                </div>
+    
+    
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+</ul>
+</div>
+
+</body>
+</html>

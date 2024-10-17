@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Online Sales Portal">
+    <meta name="author" content="Kanchi Mohan Krishna,Chenna Keshava reddy,and Lav Jharwal">
+    <title>Online Sales Portal</title>
+   
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body class="d-flex h-100 text-white bg-dark">
+
+    <div class="login">
+        <div class="container">
+            <div class="containerflex">
+                <p class="center">Don't have an account yet? <a href="{% url 'myapp:student_registration' %}">Sign up as Student</a></p>
+                <p class="center">Don't have an account yet? <a href="{% url 'myapp:external_registration' %}">Sign up as External</a></p>
+                <p class="center">Don't have an account yet? <a href="{% url 'myapp:organiser_registration' %}">Sign up as Organiser</a></p>
+            </div>
+        </div>
+        <br />
+        <!-- Add a back button here -->
+        <form action="{% url 'myapp:admin_dashboard' %}" method="post">
+            {% csrf_token %}
+            <section id="buttons">
+                <button type="submit">Back</button>
+            </section>
+        </form>
+    </div>
+</body>
+
+</html>
